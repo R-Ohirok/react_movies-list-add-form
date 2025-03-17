@@ -23,7 +23,7 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
     const isValidImdbUrl = imdbUrl.trim().length !== 0;
     const isValidImdbId = imdbId.trim().length !== 0;
 
-    return !isValidTitle || !isValidImgUrl || !isValidImdbUrl || !isValidImdbId;
+    return isValidTitle && isValidImgUrl && isValidImdbUrl && isValidImdbId;
   };
 
   const AddMovie = () => {
@@ -100,7 +100,7 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
             type="submit"
             data-cy="submit-button"
             className="button is-link"
-            disabled={isValidValues()}
+            disabled={!isValidValues()}
           >
             Add
           </button>
